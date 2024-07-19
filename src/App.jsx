@@ -5,12 +5,10 @@ import { useMovies } from './hooks/useMovies'
 
 export const App = () => {
   const { movies } = useMovies()
-  const inputRef = useRef()
+  const inputRef = useRef() // <- no abusar de esto
 
-  const handleClick = () => {
-    // current es nativa de react y siempre que se quiera acceder
-    // a un valor por referencia usando useRef siempre se tiene que acceder mediante el current
-    // ya que al ser un objeto puede cambiar el valor de value
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const value = inputRef.current.value
     console.log(value)
   }
@@ -19,9 +17,9 @@ export const App = () => {
     <div className='page'>
       <header>
         <h1>Search movies</h1>
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
           <input ref={inputRef} type='text' placeholder='Avengers, Inside Out 2, ...' />
-          <button onClick={handleClick}>Search</button>
+          <button>Search</button>
         </form>
       </header>
       <main>

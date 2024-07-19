@@ -5,6 +5,14 @@ import moviesResponse from './mocks/movies.json'
 export const App = () => {
   const movies = moviesResponse.Search
 
+  const parsedMovies = movies?.map((movie) => ({
+    id: movie.imdbID,
+    title: movie.Title,
+    year: movie.Year,
+    poster: movie.Poster
+
+  }))
+
   return (
     <div className='page'>
       <header>
@@ -15,7 +23,7 @@ export const App = () => {
         </form>
       </header>
       <main>
-        <Movies movies={movies} />
+        <Movies movies={parsedMovies} />
       </main>
     </div>
   )

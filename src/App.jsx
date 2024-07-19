@@ -1,17 +1,9 @@
 import './App.css'
 import { Movies } from './components/Movies'
-import moviesResponse from './mocks/movies.json'
+import { useMovies } from './hooks/useMovies'
 
 export const App = () => {
-  const movies = moviesResponse.Search
-
-  const parsedMovies = movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster
-
-  }))
+  const { movies } = useMovies()
 
   return (
     <div className='page'>
@@ -23,7 +15,7 @@ export const App = () => {
         </form>
       </header>
       <main>
-        <Movies movies={parsedMovies} />
+        <Movies movies={movies} />
       </main>
     </div>
   )

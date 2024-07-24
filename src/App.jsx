@@ -13,28 +13,26 @@ export const App = () => {
     console.log(query)
   }
 
-  useEffect(() => {
-    if (query === '') {
+  const handleOnChange = (event) => {
+    const value = event.target.value
+    setQuery(value)
+
+    if (value === '') {
       setError('Can not search movies with empty values')
       return
     }
 
-    if (query.match(/^\d+$/)) {
-      setError('no se puede buscar una pelicula con numero')
+    if (value.match(/^\d+$/)) {
+      setError('Search must have letters')
       return
     }
 
-    if (query.length < 3) {
-      setError('la busqueda debe tener mas de 3 caracteres')
+    if (value.length < 3) {
+      setError('Search must have more than 3 characters')
       return
     }
 
     setError(null)
-  }, [query])
-
-  const handleOnChange = (event) => {
-    const value = event.target.value
-    setQuery(value)
   }
 
   return (

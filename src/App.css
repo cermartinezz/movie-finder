@@ -4,15 +4,41 @@
   justify-content: center;
   align-items: center;
 
+  min-width: 100%;
+
 }
 
 main {
   display: flex;
   justify-content: center;
+  min-width: 100%;
 }
 
 form {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+
+  margin: 0;
+  list-style: none;
+  min-width: 100%;
+}
+
+.movie {
+  text-align: center;
+}
+
+.movie h3, .movie p {
+  margin: 0;
+}
+
+.movie img {
+  border-radius: 10px;
+  margin-top: 20px
 }

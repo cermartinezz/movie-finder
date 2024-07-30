@@ -54,10 +54,20 @@ export const App = () => {
 
   return (
     <div className='page'>
-      <header>``
+      <header>
         <h1>Search movies</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={search} name='query' type='text' placeholder='Avengers, Inside Out 2, ...' />
+          <input
+            style={{
+              border: '1px solid transparent',
+              borderColor: error ? 'red' : 'transparent'
+            }}
+            onChange={handleChange}
+            value={search}
+            name='query'
+            type='text'
+            placeholder='Avengers, Inside Out 2, ...'
+          />
           <button>Search</button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import withResult from '../mocks/movies.json'
+
 import withoutResult from '../mocks/no-results.json'
 
 export function useMovies ({ search }) {
@@ -16,7 +16,9 @@ export function useMovies ({ search }) {
 
   const getMovies = () => {
     if (search) {
-      setResponseMovies(withResult)
+      fetch(`https://www.omdbapi.com/?s=${search}&apikey=922eab02`)
+        .then(res => res.json())
+        .then(data => setResponseMovies(data))
     } else {
       setResponseMovies(withoutResult)
     }

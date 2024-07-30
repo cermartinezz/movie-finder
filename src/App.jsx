@@ -4,7 +4,7 @@ import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 
 function useSearch () {
-  const [search, setSearch] = useState('')
+  const [search, updateSearch] = useState('')
   const [error, setError] = useState(null)
   const isFirstInput = useRef(true)
 
@@ -32,16 +32,16 @@ function useSearch () {
     setError(null)
   }, [search])
 
-  return { search, setSearch, error }
+  return { search, updateSearch, error }
 }
 
 export const App = () => {
-  const { movies } = useMovies()
-  const { search, setSearch, error } = useSearch()
+  const { search, updateSearch, error } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    getMovies()
   }
 
   const handleChange = (event) => {
@@ -49,7 +49,7 @@ export const App = () => {
     console.log(value.startsWith(' '))
     if (value.startsWith(' ')) return
 
-    setSearch(value)
+    updateSearch(event.target.value)
   }
 
   return (

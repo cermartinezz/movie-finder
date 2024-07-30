@@ -46,7 +46,6 @@ export const App = () => {
 
   const handleChange = (event) => {
     const value = event.target.value
-    console.log(value.startsWith(' '))
     if (value.startsWith(' ')) return
 
     updateSearch(event.target.value)

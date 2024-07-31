@@ -42,7 +42,7 @@ export const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getMovies()
+    getMovies({ search })
   }
 
   const handleChange = (event) => {
@@ -55,6 +55,10 @@ export const App = () => {
   const handleSort = () => {
     setSort(!sort)
   }
+
+  useEffect(() => {
+    console.log('get movies created')
+  }, [getMovies])
 
   return (
     <div className='page'>

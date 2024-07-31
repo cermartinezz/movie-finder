@@ -8,7 +8,7 @@ export function useMovies ({ search, sort }) {
   const previousSearch = useRef(search)
 
   const getMovies = useMemo(() => {
-    return async () => {
+    return async ({ search }) => {
       if (search === previousSearch.current) return
 
       try {
@@ -23,7 +23,7 @@ export function useMovies ({ search, sort }) {
         setLoading(false)
       }
     }
-  }, [search])
+  }, [])
 
   // the logic to sort movies will be store and executed only when movies and sort
   // this is commonly use on big set of data

@@ -28,7 +28,6 @@ export function useMovies ({ search, sort }) {
   // the logic to sort movies will be store and executed only when movies and sort
   // this is commonly use on big set of data
   const sortedMovies = useMemo(() => {
-    console.log('memosortedmovies')
     return sort ? [...movies].sort((a, b) => a.title.localeCompare(b.title)) : movies
   }, [movies, sort])
 

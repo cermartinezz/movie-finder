@@ -56,10 +56,6 @@ export const App = () => {
     setSort(!sort)
   }
 
-  useEffect(() => {
-    console.log('get movies created')
-  }, [getMovies])
-
   return (
     <div className='page'>
       <header>
